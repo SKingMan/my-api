@@ -12,10 +12,10 @@ def test():
     return "Hello world! This is a test!"
 @app.route("/data.json")  # 关键点：直接在路由中写 .json
 def get_data():
-    return jsonify({
-        "question": "Who are you?",
-        "answer": "I'm a AI Assistant."
-    })
+    return jsonify([
+  {"question": "Who are you?", "answer": "I'm a AI Assistant."},
+  {"question": "What can you do?", "answer": "Answer questions."}
+])
 
 if __name__ == "__main__":
     app.run(debug=True)
