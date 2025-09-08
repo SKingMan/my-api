@@ -13,6 +13,11 @@ def index():
 @app.route("/test")  # 关键点：直接在路由中写 .json
 def test():
     return "Hello world! This is a test!"
+
+
+@app.route("/test2")  # 关键点：直接在路由中写 .json
+def test2():
+    return "Hello world! This is a test!"
 @app.route("/data.json")  # 关键点：直接在路由中写 .json
 def get_data():
     return jsonify({
