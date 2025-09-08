@@ -1,4 +1,4 @@
-from flask import Flask, Response
+from flask import Flask, jsonify
 import csv
 from io import StringIO
 
@@ -15,22 +15,13 @@ def test():
     return "Hello world! This is a test!"
 @app.route("/data.json")  # 关键点：直接在路由中写 .json
 def get_data():
-    data = [
-  {"question": "Who are you?", "answer": "I'm a AI Assistant."},
-  {"question": "What can you do?", "answer": "Answer questions."}
-]
-    # 创建 CSV 文件内容
-    csv_buffer = StringIO()
-    writer = csv.DictWriter(csv_buffer, fieldnames=["question", "answer"])
-    writer.writeheader()
-    writer.writerows(data)
-
-    # 返回 CSV 响应
-    return Response(
-        csv_buffer.getvalue(),
-        mimetype="text/csv",
-        headers={"Content-disposition": "attachment; filename=data.csv"}
-    )
+    return jsonify({
+        "data": [
+            {"product_id": "P001", "name": "无线耳机", "price": 299, "stock": 156, "category": "电子设备"},
+            {"product_id": "P002", "name": "机械键盘", "price": 399, "stock": 89, "category": "电脑外设"},
+            {"product_id": "P003", "name": "智能手表", "price": 899, "stock": 42, "category": "可穿戴设备"}
+        ]
+    })
 
 if __name__ == "__main__":
     app.run(debug=True)
