@@ -13,8 +13,8 @@ def test():
 @app.route("/data.json")  # 关键点：直接在路由中写 .json
 def get_data():
     return jsonify({
-        "message": "This is a .json endpoint",
-        "data": [1, 2, 3]
+        "question": "Who are you?",
+        "answer": "I'm a AI Assistant."
     })
 
 if __name__ == "__main__":
